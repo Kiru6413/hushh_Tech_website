@@ -13,7 +13,9 @@
     "viewProfile": "Voir le Profil",
     "home": "Accueil",
     "kycStudio": "KYC Studio Alpha",
-    "deleteAccount": "Supprimer le Compte"
+    "deleteAccount": "Supprimer le Compte",
+    "unlockCoins": "Débloquer 300K pièces",
+    "unlockSubtitle": "1$ ou utilisez un code promo"
   },
   "deleteAccount": {
     "title": "Supprimer le Compte",

@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || (process.env.NODE_ENV === 'production' ? 8080 : 3005);
 const DIST_DIR = join(__dirname, 'dist');
 
 // ---------------------------------------------------------------------------
@@ -136,7 +136,7 @@ app.get('/metric', (_req, res) => {
   res.redirect(302, '/metrics');
 });
 
-app.get('*', (req, res) => {
+app.use('/', (req, res) => {
   // Set no-cache for dynamic pages
   const isNoCachePath = NO_CACHE_PATHS.some((p) => req.path === p || req.path.startsWith(p + '/'));
   if (isNoCachePath || req.path === '/' || req.path === '/index.html') {

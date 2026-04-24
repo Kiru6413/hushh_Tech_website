@@ -13,7 +13,9 @@
     "viewProfile": "查看个人资料",
     "home": "首页",
     "kycStudio": "KYC工作室 Alpha",
-    "deleteAccount": "删除账户"
+    "deleteAccount": "删除账户",
+    "unlockCoins": "解锁 30 万金币",
+    "unlockSubtitle": "1美元或使用优惠码"
   },
   "deleteAccount": {
     "title": "删除账户",

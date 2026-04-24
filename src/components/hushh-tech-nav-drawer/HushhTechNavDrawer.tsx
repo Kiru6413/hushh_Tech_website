@@ -5,6 +5,7 @@
  */
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import hushhLogo from "../images/Hushhogo.png";
 import { useAuthSession } from "../../auth/AuthSessionProvider";
 
@@ -16,26 +17,7 @@ interface NavItem {
   subtitle?: string;
 }
 
-const NAV_ITEMS: NavItem[] = [
-  { icon: "home", label: "Home", path: "/" },
-  { icon: "menu_book", label: "Our Philosophy", path: "/philosophy" },
-  { icon: "pie_chart", label: "Fund A", path: "/discover-fund-a" },
-  { icon: "groups", label: "Community", path: "/community" },
-  { icon: "verified_user", label: "KYC Studio Alpha", path: "/kyc" },
-];
 
-const HIGHLIGHT_ITEM: NavItem = {
-  icon: "lock",
-  label: "Unlock 300K Coins",
-  subtitle: "$1 or use coupon code",
-  path: "/unlock-coins",
-  highlight: true,
-};
-
-const BOTTOM_NAV: NavItem[] = [
-  { icon: "mail", label: "Contact", path: "/contact" },
-  { icon: "help", label: "FAQ", path: "/faq" },
-];
 
 interface HushhTechNavDrawerProps {
   isOpen: boolean;
@@ -47,6 +29,29 @@ const HushhTechNavDrawer: React.FC<HushhTechNavDrawerProps> = ({
   onClose,
 }) => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
+  const HIGHLIGHT_ITEM: NavItem = {
+  icon: "lock",
+  label: t("nav.unlockCoins"),
+  subtitle: t("nav.unlockSubtitle"),
+  path:"/onboarding/meet-ceo",
+  highlight: true,
+};
+
+const BOTTOM_NAV: NavItem[] = [
+  { icon: "mail", label: t("nav.contact"), path: "/contact" },
+  { icon: "help", label: t("nav.faq"), path: "/faq" },
+];
+
+  const NAV_ITEMS: NavItem[] = [
+  { icon: "home", label: t("nav.home"), path: "/" },
+  { icon: "menu_book", label: t("nav.ourPhilosophy"), path: "/about/leadership" },
+  { icon: "pie_chart", label: t("nav.fundA"), path: "/discover-fund-a" },
+  { icon: "groups", label: t("nav.community"), path: "/community" },
+  { icon: "verified_user", label: t("nav.kycStudio"), path: "/a2a-playground" },
+];
+
   const { status, signOut } = useAuthSession();
   const isAuthenticated = status === "authenticated";
 
@@ -76,7 +81,9 @@ const HushhTechNavDrawer: React.FC<HushhTechNavDrawerProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-white flex flex-col selection:bg-hushh-blue selection:text-white">
+    <div 
+    key={currentLang}
+    className="fixed inset-0 z-[100] bg-white flex flex-col selection:bg-hushh-blue selection:text-white">
       {/* ── Header ── */}
       <div className="px-6 py-6 flex justify-between items-center">
         <div className="flex items-center gap-4">
@@ -173,7 +180,7 @@ const HushhTechNavDrawer: React.FC<HushhTechNavDrawerProps> = ({
                   <span className="material-symbols-outlined !text-[1.1rem]">person</span>
                 </div>
                 <span className="text-[0.95rem] font-medium text-gray-900 tracking-wide group-hover:text-hushh-blue transition-colors">
-                  View Profile
+                 {t("profile.viewProfile")}
                 </span>
               </button>
 
@@ -182,13 +189,13 @@ const HushhTechNavDrawer: React.FC<HushhTechNavDrawerProps> = ({
                   onClick={() => void handleLogout()}
                   className="text-left text-[0.85rem] font-medium text-gray-500 hover:text-red-500 transition-colors tracking-wide"
                 >
-                  Log Out
+                  {t("auth.logout")}
                 </button>
                 <button
                   onClick={() => handleNavigate("/delete-account")}
                   className="text-left text-[0.85rem] font-medium text-gray-400 hover:text-red-500 transition-colors tracking-wide"
                 >
-                  Delete Account
+                  {t("profile.deleteAccount")}
                 </button>
               </div>
             </>
@@ -198,13 +205,13 @@ const HushhTechNavDrawer: React.FC<HushhTechNavDrawerProps> = ({
                 onClick={() => handleNavigate("/login")}
                 className="text-left text-[0.85rem] font-medium text-gray-500 hover:text-hushh-blue transition-colors tracking-wide"
               >
-                Log In
+                {t("auth.login")}
               </button>
               <button
                 onClick={() => handleNavigate("/signup")}
                 className="text-left text-[0.85rem] font-medium text-gray-400 hover:text-hushh-blue transition-colors tracking-wide"
               >
-                Sign Up
+                {t("auth.signup")}
               </button>
             </div>
           )}

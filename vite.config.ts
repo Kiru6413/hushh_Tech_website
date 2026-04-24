@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import { readFileSync } from 'fs'
 import { execSync } from 'child_process'
+import { resolve } from 'path'
 
 // Read version from package.json at build time
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'))
@@ -61,12 +62,15 @@ export default defineConfig({
     proxy: {
       // Forward API calls to the serverless host in dev (vercel dev runs on 3000 by default)
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://localhost:3005',
         changeOrigin: true,
       },
     },
   },
   resolve: {
+    alias: {
+      '@api': resolve(__dirname, 'src/api'),
+    },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
   },
 })

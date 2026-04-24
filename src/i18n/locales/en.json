@@ -13,7 +13,9 @@
     "viewProfile": "View Profile",
     "home": "Home",
     "kycStudio": "KYC Studio Alpha",
-    "deleteAccount": "Delete Account"
+    "deleteAccount": "Delete Account",
+    "unlockCoins": "Unlock 300K Coins",
+    "unlockSubtitle": "$1 or use coupon code"
   },
   "deleteAccount": {
     "title": "Delete Account",

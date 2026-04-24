@@ -13,7 +13,9 @@
     "viewProfile": "عرض الملف الشخصي",
     "home": "الرئيسية",
     "kycStudio": "استوديو KYC ألفا",
-    "deleteAccount": "حذف الحساب"
+    "deleteAccount": "حذف الحساب",
+    "unlockCoins": "افتح 300 ألف عملة",
+    "unlockSubtitle": "1 دولار أو استخدم رمز القسيمة"
   },
   "deleteAccount": {
     "title": "حذف الحساب",
