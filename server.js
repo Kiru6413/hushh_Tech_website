@@ -136,7 +136,7 @@ app.get('/metric', (_req, res) => {
   res.redirect(302, '/metrics');
 });
 
-app.use('/', (req, res) => {
+app.get('*', (req, res) => {
   // Set no-cache for dynamic pages
   const isNoCachePath = NO_CACHE_PATHS.some((p) => req.path === p || req.path.startsWith(p + '/'));
   if (isNoCachePath || req.path === '/' || req.path === '/index.html') {
