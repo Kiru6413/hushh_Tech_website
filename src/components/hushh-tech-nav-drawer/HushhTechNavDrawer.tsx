@@ -29,8 +29,7 @@ const HushhTechNavDrawer: React.FC<HushhTechNavDrawerProps> = ({
   onClose,
 }) => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
-  const currentLang = i18n.language;
+  const { t } = useTranslation();
   const HIGHLIGHT_ITEM: NavItem = {
   icon: "lock",
   label: t("nav.unlockCoins"),
@@ -82,7 +81,6 @@ const BOTTOM_NAV: NavItem[] = [
 
   return (
     <div 
-    key={currentLang}
     className="fixed inset-0 z-[100] bg-white flex flex-col selection:bg-hushh-blue selection:text-white">
       {/* ── Header ── */}
       <div className="px-6 py-6 flex justify-between items-center">
