@@ -63,16 +63,7 @@ export const buildWalletCardContent = (input) => ({
   profileUrl: buildPublicProfileUrl(input),
 });
 
-export const buildGoldPassPayload = (input) => ({
-  holderName: getDisplayValue(input?.name, "Hushh Investor"),
-  organizationName: WALLET_CARD_ORGANIZATION_NAME,
-  investmentClass: normalizeInvestmentClass(
-    buildInvestmentLabel(
-      getWalletInvestmentClass(input?.investmentAmount)
-    )
-  ),
-  membershipId: buildMembershipId(input),
-  email: getDisplayValue(input?.email, ""),
-  passUrl: `${DEFAULT_WALLET_ROOT_URL}/wallet-pass`,
-  profileUrl: buildPublicProfileUrl(input),
-});
+export const buildGoldPassPayload = (input) => {
+  const { badgeText, title, ...payload } = buildWalletCardContent(input);
+  return payload;
+};
