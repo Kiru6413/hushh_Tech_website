@@ -178,7 +178,7 @@ const BOTTOM_NAV: NavItem[] = [
                   <span className="material-symbols-outlined !text-[1.1rem]">person</span>
                 </div>
                 <span className="text-[0.95rem] font-medium text-gray-900 tracking-wide group-hover:text-hushh-blue transition-colors">
-                 {t("profile.viewProfile")}
+                 {t("nav.viewProfile")}
                 </span>
               </button>
 
