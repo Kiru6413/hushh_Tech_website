@@ -53,11 +53,7 @@ export const buildWalletCardContent = (input) => ({
   holderName: getDisplayValue(input?.name, "Hushh Investor"),
   organizationName: WALLET_CARD_ORGANIZATION_NAME,
   membershipId: buildMembershipId(input),
-  investmentClass: normalizeInvestmentClass(
-    buildInvestmentLabel(
-      getWalletInvestmentClass(input?.investmentAmount)
-    )
-  ),
+  investmentClass: getWalletInvestmentClass(input?.investmentAmount),
   email: getDisplayValue(input?.email, ""),
   passUrl: `${DEFAULT_WALLET_ROOT_URL}/wallet-pass`,
   profileUrl: buildPublicProfileUrl(input),
